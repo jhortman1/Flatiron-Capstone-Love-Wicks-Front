@@ -4,15 +4,25 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponentComponent } from './login-component/login-component.component';
+import { MenuComponentComponent } from './menu-component/menu-component.component';
+import { UserComponentComponent } from './user-component/user-component.component';
+import { AdminComponentComponent } from './admin-component/admin-component.component';
+import { AdminMenuComponentComponent } from './admin-menu-component/admin-menu-component.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponentComponent
+    LoginComponentComponent,
+    MenuComponentComponent,
+    UserComponentComponent,
+    AdminComponentComponent,
+    AdminMenuComponentComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
