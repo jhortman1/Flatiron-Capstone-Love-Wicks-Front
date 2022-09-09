@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {FormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +10,7 @@ import { UserComponentComponent } from './admin/user-component/user-component.co
 import { AdminComponentComponent } from './admin-component/admin-component.component';
 import { AdminMenuComponentComponent } from './admin-menu-component/admin-menu-component.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AdduserComponent } from './admin/users/adduser-component/adduser.component';
 
 @NgModule({
   declarations: [
@@ -18,11 +20,13 @@ import { HttpClientModule } from '@angular/common/http';
     UserComponentComponent,
     AdminComponentComponent,
     AdminMenuComponentComponent,
+    AdduserComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

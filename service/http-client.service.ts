@@ -12,4 +12,7 @@ export class HttpClientService {
   {
     return this.httpClient.get<AppUser[]>('http://localhost:8080/api/users');
   }
+  addUser(newUser: AppUser) {
+    return this.httpClient.post<AppUser>('http://localhost:8080/api/signup', newUser);   
+  }
 }

@@ -18,14 +18,29 @@ export class UserComponentComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute) { }
 
-  ngOnInit() {
-    this.httpClientService.getUsers().subscribe(
-      response => this.handleSuccessfulResponse(response),
-    );
-  }
+    ngOnInit() {
+      this.refreshData();
+     }
+   
+     refreshData() {
+       this.httpClientService.getUsers().subscribe(
+         response => this.handleSuccessfulResponse(response),
+       );
+   
+       this.activatedRoute.queryParams.subscribe(
+         (params) => {
+           this.action = params['action']
+         }
+       );
+     }
 
   handleSuccessfulResponse(response: AppUser[]) {
     this.users = response;
+  }
+
+  addUser() {
+    this.selectedUser = new AppUser();
+    this.router.navigate(['admin', 'users'], { queryParams: { action: 'add' } });
   }
 
 }
