@@ -28,16 +28,24 @@ export class UserComponentComponent implements OnInit {
        );
    
        this.activatedRoute.queryParams.subscribe(
-         (params) => {
-           this.action = params['action']
-         }
-       );
-     }
+        (params) => {
+          this.action = params['action'];
+          const selectedUserId = params['id'];
+          if (selectedUserId) {
+            this.selectedUser = this.users.find(user => user.id === +selectedUserId) as AppUser;
+          }
+        }
+      );
+    }
 
   handleSuccessfulResponse(response: AppUser[]) {
     this.users = response;
   }
 
+  viewUser(id: number) {
+    this.router.navigate(['admin','users'], {queryParams : {id, action: 'view'}});
+  }
+  
   addUser() {
     this.selectedUser = new AppUser();
     this.router.navigate(['admin', 'users'], { queryParams: { action: 'add' } });

@@ -1,0 +1,27 @@
+<h1>Candle Admin</h1>
+
+<div class="container row">
+  <div class="col-md-6">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Candle Name</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let candle of candles">
+          <td>{{candle.id}}</td>
+          <td>{{candle.name}}</td>
+          <td>
+            <button type="button" class="btn btn-outline-info btn-sm" (click)="setCandle(candle.id)">Details</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-6">
+    View Candle Details/Add Candle
+  </div>
+</div>

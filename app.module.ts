@@ -11,6 +11,8 @@ import { AdminComponentComponent } from './admin-component/admin-component.compo
 import { AdminMenuComponentComponent } from './admin-menu-component/admin-menu-component.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdduserComponent } from './admin/users/adduser-component/adduser.component';
+import { ViewuserComponent } from './admin/users/viewuser/viewuser.component';
+import { CandleComponent } from './admin/candle/candle.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { AdduserComponent } from './admin/users/adduser-component/adduser.compon
     AdminComponentComponent,
     AdminMenuComponentComponent,
     AdduserComponent,
+    ViewuserComponent,
+    CandleComponent,
   ],
   imports: [
     BrowserModule,

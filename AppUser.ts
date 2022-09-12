@@ -4,5 +4,6 @@
     address: string;
     email: string;
     phone: string;
-    password:string
+    password:string;
+    isActive:boolean;
   }
