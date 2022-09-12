@@ -13,6 +13,7 @@ export class AddCandleComponent implements OnInit {
 
   @Input()
   candle:Candle;
+  
   private selectedFile: any;
   imgURL: any;
 

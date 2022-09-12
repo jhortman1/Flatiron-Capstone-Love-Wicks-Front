@@ -15,13 +15,14 @@
           <td>{{candle.id}}</td>
           <td>{{candle.name}}</td>
           <td>
-            <button type="button" class="btn btn-outline-info btn-sm" (click)="setCandle(candle.id)">Details</button>
+            <button type="button" class="btn btn-outline-info btn-sm" (click)="viewCandle(candle.id)">Details</button>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
   <div class="col-md-6">
-    <app-add-candle *ngIf="action === 'add'" [candle]="selectedCandle" (bookAddedEvent)="refreshData()"></app-add-candle>
+    <app-add-candle *ngIf="action === 'add'" [candle]="selectedCandle" (candleAddedEvent)="refreshData()"></app-add-candle>
+    <app-view-candle *ngIf="action === 'view'" [candle]="selectedCandle"></app-view-candle>
   </div>
 </div>

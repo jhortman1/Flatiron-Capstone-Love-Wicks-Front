@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CandleComponent implements OnInit {
 
   candles: Array<Candle>;
+  candlesRecieved: Array<Candle>;
   selectedCandle: Candle;
   action: string;
 
@@ -34,14 +35,29 @@ export class CandleComponent implements OnInit {
       response => this.handleSuccessfulResponse(response)
     );
     this.activedRoute.queryParams.subscribe(
-      (params) => {
-        this.action = params['action'];
+      (params) => {this.action = params['action'];
+	  const id = params['id'];
+        if (id) {
+          this.selectedCandle = this.candles.find(candle => {return candle.id === +id;} ) as Candle;
+        }
       }
     );
   }
 
   handleSuccessfulResponse(response : Candle[]) {
     this.candles = response;
+    // this.candles = new Array<Candle>();
+    // this.candlesRecieved =response;
+    // for(const candle of this.candlesRecieved)
+    // {
+    //     const candleWithimage = new Candle();
+    //     candleWithimage.id = candle.id;
+    //     candleWithimage.description=candle.description;
+    //     candleWithimage.price=candle.price;
+    //     candleWithimage.retrievedImage='data:image/jpeg;base64,' + candle.photoId;
+    //     candleWithimage.photoId=candle.photoId;
+    //     this.candles.push(candleWithimage);
+    // }
   }
 
   addCandle() {
@@ -49,8 +65,7 @@ export class CandleComponent implements OnInit {
     this.router.navigate(['admin', 'candles'], { queryParams: { action: 'add' } });
   }
 
-  setCandle(id:number)
-  {
-    return null;
+  viewCandle(id: number) {
+    this.router.navigate(['admin', 'candles'], { queryParams: { id, action: 'view' } });
   }
 }

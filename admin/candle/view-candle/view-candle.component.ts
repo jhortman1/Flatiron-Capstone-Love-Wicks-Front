@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Candle } from 'src/app/Candle';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { HttpClientService } from 'src/app/service/http-client.service';
 
 @Component({
   selector: 'app-view-candle',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewCandleComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  candle:Candle;
+  @Output()
+  candleDeletedEvent = new EventEmitter();
+
+  constructor(private httpClientService: HttpClientService, private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  deleteCandle() {
+    this.httpClientService.deleteCandle(this.candle.id).subscribe(
+      (candle) => {
+        this.candleDeletedEvent.emit();
+        this.router.navigate(['admin', 'candles']);
+      }
+    );
   }
 
 }

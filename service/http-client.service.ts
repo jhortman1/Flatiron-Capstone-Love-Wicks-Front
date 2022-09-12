@@ -25,4 +25,7 @@ export class HttpClientService {
   addCandle(newCandle: Candle) {
     return this.httpClient.post<Candle>('http://localhost:8080/api/candle', newCandle);
   }
+  deleteCandle(id:number) {
+    return this.httpClient.delete<Candle>('http://localhost:8080/api/candle/' + id);
+  }
 }

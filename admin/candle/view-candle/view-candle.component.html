@@ -1,1 +1,25 @@
-<p>view-candle works!</p>
+<h3>Candle Details</h3>
+
+    <table>
+        <tr>
+            <td>Id</td>
+            <td>{{candle.id}}</td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>{{candle.name}}</td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td>{{candle.price}}</td>
+        </tr>
+        <tr>
+            <td>In Stock</td>
+            <td>{{candle.inStock}}</td>
+        </tr>
+    </table>
+    <br>
+    <img src="{{candle.retrievedImage}}" height="200" width="200">
+    <br><br>
+
+    <a class="btn btn-small btn-outline-danger" (click)="deleteCandle()">Delete</a>

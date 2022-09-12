@@ -4,4 +4,6 @@
     description: string;
     price: number;
     photoId:string;
+    inStock:boolean
+    retrievedImage: string;
   }
