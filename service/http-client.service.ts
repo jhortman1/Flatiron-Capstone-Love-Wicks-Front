@@ -22,4 +22,7 @@ export class HttpClientService {
   getCandles() {
     return this.httpClient.get<Candle[]>('http://localhost:8080/api/candles');
   }
+  addCandle(newCandle: Candle) {
+    return this.httpClient.post<Candle>('http://localhost:8080/api/candle', newCandle);
+  }
 }

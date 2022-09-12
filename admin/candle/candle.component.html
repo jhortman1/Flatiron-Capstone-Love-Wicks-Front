@@ -1,5 +1,5 @@
 <h1>Candle Admin</h1>
-
+<a class="container row btn btn-outline-primary btn-sm" (click)="addCandle()">Add Candle</a>
 <div class="container row">
   <div class="col-md-6">
     <table class="table">
@@ -22,6 +22,6 @@
     </table>
   </div>
   <div class="col-md-6">
-    View Candle Details/Add Candle
+    <app-add-candle *ngIf="action === 'add'" [candle]="selectedCandle" (bookAddedEvent)="refreshData()"></app-add-candle>
   </div>
 </div>
