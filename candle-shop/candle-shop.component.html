@@ -1,0 +1,50 @@
+<div class="container row">
+    <h3 class="col-md-12 text-center">Layia Love's Candle Shop</h3>
+</div>
+<div class="col-md-12 custom-products-cart-container">
+    <div class="offset-md-8">
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <br>
+                <a href="#" class="btn btn-outline-info btn-small" data-toggle="dropdown" role="button" aria-expanded="false">
+                    <span class="fa fa-shopping-cart">
+                        Cart:
+                    </span>
+                    <span class="caret">{{cartCandles.length}}</span>
+                </a>
+                <ul class="dropdown-menu dropdown-cart" role="menu">
+                    <li *ngFor="let item of cartCandles">
+                        <div class="item product-cart-item row">
+                            <div class="col-md-8" *ngIf="item">{{item.name}}</div>
+                            <div class="col-md-4" *ngIf="item"><strong>${{item.price}}</strong></div>
+                        </div>
+                    </li>
+                    <hr>
+                    <li *ngIf="cartCandles.length > 0">
+                        <a class="btn btn-small btn-outline-success" role="button" (click)="sumbitOrder()">Submit Order</a></li>
+                    <br>
+                    <br>
+                    <li *ngIf="cartCandles.length > 0">
+                        <a class="btn btn-small btn-outline-warning" role="button" (click)="emptyCart()">Empty Cart</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="col-md-3" *ngFor="let candle of candles;let i=index">
+    <div class="card card-block">
+        <img class="custom-image-style text-center" img src="{{candle.retrievedImage}}" height="200" width="200" style="margin-left: 60px;
+        margin-top: 10px">
+        <div class="candle-desc-container row">
+            <div>
+                <p style="margin-left: 60px"><strong>{{candle.name}}: ${{candle.price}}</strong></p>
+                <p style="margin-left: 60px">{{candle.description}}</p>
+            </div>
+            <div class="offset-md-4 col-md-4">
+                <button class="btn btn-outline-primary btn-sm" (click)="addToCart(candle.id)"
+                    >Add To Cart</button>
+            </div>
+        </div>
+    </div>
+</div>

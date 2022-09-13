@@ -70,5 +70,6 @@ export class CandleComponent implements OnInit {
 
   viewCandle(id: number) {
     this.router.navigate(['admin', 'candles'], { queryParams: { id, action: 'view' } });
+    this.selectedCandle = this.candles.find(candle => candle.id === +id ) as Candle;
   }
 }

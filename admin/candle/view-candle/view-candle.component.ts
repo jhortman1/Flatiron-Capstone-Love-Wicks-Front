@@ -21,9 +21,6 @@ export class ViewCandleComponent implements OnInit {
   constructor(private httpClientService: HttpClientService, private router: Router) { }
 
   ngOnInit(): void {
-    setTimeout(()=>{                           
-      this.loader = false;
-  }, 1000);
   }
 
   

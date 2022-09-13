@@ -6,4 +6,5 @@
     photoId:string;
     inStock:boolean
     retrievedImage: string;
+    addedToCart:boolean;
   }

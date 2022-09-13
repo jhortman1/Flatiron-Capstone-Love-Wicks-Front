@@ -2,6 +2,7 @@ import { Candle } from './../Candle';
 import { AppUser } from './../AppUser';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Order } from '../Order';
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +34,10 @@ export class HttpClientService {
   }
   updateCandle(updatedCandle: Candle) {
     return this.httpClient.put<Candle>('http://localhost:8080/api/candle/'+updatedCandle.id, updatedCandle);
+  }
+  addOrder(order: Order)
+  {
+    console.log(order);
+    return this.httpClient.post<Order>('http://localhost:8080/api/order', order);
   }
 }

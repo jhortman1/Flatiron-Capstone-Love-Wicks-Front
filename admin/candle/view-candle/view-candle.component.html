@@ -1,7 +1,4 @@
-<div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status" *ngIf="loader">
-    <span class="visually-hidden">Loading...</span>
-  </div>
-<div class="CandleDetails"*ngIf="!loader">
+<div class="CandleDetails"*ngIf="candle">
     <h3>Candle Details</h3>
     <table>
         <tr>
@@ -25,5 +22,5 @@
     <img src="{{candle.retrievedImage}}" height="200" width="200">
     <br><br>
     <a class="btn btn-small btn-outline-warning" (click)="editCandle()">Edit</a>
-    <a class="btn btn-small btn-outline-danger" (click)="deleteCandle()">Delete</a>
+    <a class="btn btn-small btn-outline-danger" (click)="deleteCandle()">Out of Stock</a>
 </div>
