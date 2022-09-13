@@ -1,4 +1,4 @@
-import { Candle } from './../../../Candle';
+import { Candle } from 'src/app/Candle';
 import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import { HttpClientService } from 'src/app/service/http-client.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,6 +10,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./add-candle.component.css']
 })
 export class AddCandleComponent implements OnInit {
+
+  checked = false;
 
   @Input()
   candle:Candle;
@@ -38,28 +40,36 @@ export class AddCandleComponent implements OnInit {
     };
 
   }
-
   saveCandle() {
-
-    const uploadData = new FormData();
-    uploadData.append('imageFile', this.selectedFile, this.selectedFile.name);
-    this.selectedFile.imageName = this.selectedFile.name;
-
-    this.httpClient.post('http://localhost:8080/api/upload', uploadData, { observe: 'response' })
-      .subscribe((response) => {
-        if (response.status === 200) {
-          this.httpClientService.addCandle(this.candle).subscribe(
-            (candle) => {
-              this.candleAddedEvent.emit();
-              this.router.navigate(['admin', 'candles']);
+      if(this.candle.id == null)
+      {
+        const uploadData = new FormData();
+        uploadData.append('imageFile', this.selectedFile, this.selectedFile.name);
+        this.selectedFile.imageName = this.selectedFile.name;
+    
+        this.httpClient.post('http://localhost:8080/api/upload', uploadData, { observe: 'response' })
+          .subscribe((response) => {
+            if (response.status === 200) {
+              this.httpClientService.addCandle(this.candle).subscribe(
+                (candle) => {
+                  this.candleAddedEvent.emit();
+                  this.router.navigate(['admin', 'candles']);
+                }
+              );
+              console.log('Image uploaded successfully');
+            } else {
+              console.log('Image not uploaded successfully');
             }
+          }
           );
-          console.log('Image uploaded successfully');
-        } else {
-          console.log('Image not uploaded successfully');
-        }
+      } else {
+        this.httpClientService.updateCandle(this.candle).subscribe(
+          (candle) => {
+            this.candleAddedEvent.emit();
+            this.router.navigate(['admin', 'candles']);
+          }
+        );
       }
-      );
   }
 
 }

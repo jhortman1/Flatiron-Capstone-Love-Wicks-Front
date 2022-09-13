@@ -1,25 +1,29 @@
-<h3>Candle Details</h3>
-
+<div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status" *ngIf="loader">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+<div class="CandleDetails"*ngIf="!loader">
+    <h3>Candle Details</h3>
     <table>
         <tr>
-            <td>Id</td>
+            <td>Id: </td>
             <td>{{candle.id}}</td>
         </tr>
         <tr>
-            <td>Name</td>
+            <td>Name: </td>
             <td>{{candle.name}}</td>
         </tr>
         <tr>
-            <td>Price</td>
+            <td>Price: </td>
             <td>{{candle.price}}</td>
         </tr>
         <tr>
-            <td>In Stock</td>
+            <td>In Stock: </td>
             <td>{{candle.inStock}}</td>
         </tr>
     </table>
     <br>
     <img src="{{candle.retrievedImage}}" height="200" width="200">
     <br><br>
-
+    <a class="btn btn-small btn-outline-warning" (click)="editCandle()">Edit</a>
     <a class="btn btn-small btn-outline-danger" (click)="deleteCandle()">Delete</a>
+</div>

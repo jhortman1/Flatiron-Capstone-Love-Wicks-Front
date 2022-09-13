@@ -16,6 +16,9 @@ export class HttpClientService {
   addUser(newUser: AppUser) {
     return this.httpClient.post<AppUser>('http://localhost:8080/api/signup', newUser);   
   }
+  updateUser(updatedUser: AppUser) {
+    return this.httpClient.put<AppUser>('http://localhost:8080/api/user/'+updatedUser.id, updatedUser);
+  }
   deleteUser(id:number) {
     return this.httpClient.delete<AppUser>('http://localhost:8080/api/user/' + id);
   }
@@ -27,5 +30,8 @@ export class HttpClientService {
   }
   deleteCandle(id:number) {
     return this.httpClient.delete<Candle>('http://localhost:8080/api/candle/' + id);
+  }
+  updateCandle(updatedCandle: Candle) {
+    return this.httpClient.put<Candle>('http://localhost:8080/api/candle/'+updatedCandle.id, updatedCandle);
   }
 }

@@ -30,4 +30,8 @@ export class ViewuserComponent implements OnInit {
     );
   }
 
+  editUser() {
+    this.router.navigate(['admin', 'users'], { queryParams: { action: 'edit', id: this.user.id } });
+  }
+
 }

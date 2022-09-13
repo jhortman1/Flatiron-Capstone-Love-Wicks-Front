@@ -22,7 +22,7 @@
     </table>
   </div>
   <div class="col-md-6">
-    <app-add-candle *ngIf="action === 'add'" [candle]="selectedCandle" (candleAddedEvent)="refreshData()"></app-add-candle>
+    <app-add-candle *ngIf="action === 'edit' || action === 'add'" [candle]="selectedCandle" (candleAddedEvent)="refreshData()"></app-add-candle>
     <app-view-candle *ngIf="action === 'view'" [candle]="selectedCandle"></app-view-candle>
   </div>
 </div>

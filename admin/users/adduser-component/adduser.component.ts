@@ -22,11 +22,21 @@ export class AdduserComponent implements OnInit {
   ngOnInit(): void {
   }
   addUser() {
-    this.httpClientService.addUser(this.user).subscribe(
-      (user) => {
-        this.userAddedEvent.emit();
-        this.router.navigate(['admin', 'users']);
-      }
-    );
+    if(this.user.id == null)
+    {
+      this.httpClientService.addUser(this.user).subscribe(
+        (user) => {
+          this.userAddedEvent.emit();
+          this.router.navigate(['admin', 'users']);
+        }
+      );
+    } else {
+      this.httpClientService.updateUser(this.user).subscribe(
+        (user) => {
+          this.userAddedEvent.emit();
+          this.router.navigate(['admin', 'users']);
+        }
+      );
+    }
   }
 }

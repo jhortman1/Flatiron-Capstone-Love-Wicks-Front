@@ -10,15 +10,23 @@ import { HttpClientService } from 'src/app/service/http-client.service';
 })
 export class ViewCandleComponent implements OnInit {
 
+  loader = true;
+
   @Input()
   candle:Candle;
+  
   @Output()
   candleDeletedEvent = new EventEmitter();
 
   constructor(private httpClientService: HttpClientService, private router: Router) { }
 
   ngOnInit(): void {
+    setTimeout(()=>{                           
+      this.loader = false;
+  }, 1000);
   }
+
+  
 
   deleteCandle() {
     this.httpClientService.deleteCandle(this.candle.id).subscribe(
@@ -29,4 +37,8 @@ export class ViewCandleComponent implements OnInit {
     );
   }
 
+  editCandle() {
+    this.router.navigate(['admin', 'candles'], { queryParams: { action: 'edit', id: this.candle.id } });
+  }
+  
 }

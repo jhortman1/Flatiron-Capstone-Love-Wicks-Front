@@ -37,10 +37,9 @@ export class CandleComponent implements OnInit {
     this.activedRoute.queryParams.subscribe(
       (params) => {
         this.action = params['action'];
-	      const selectedCandleId = params['id'];
-        if (selectedCandleId) {
-          console.log(selectedCandleId);
-          this.selectedCandle = this.candles.find(candle => candle.id === +selectedCandleId ) as Candle;
+	      const id = params['id'];
+        if (id) {
+          this.selectedCandle = this.candles.find(candle =>  candle.id === +id ) as Candle;
         }
       }
     );
