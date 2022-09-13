@@ -10,9 +10,8 @@
   <label for="price">Price</label>
   <input type="text" class="form-control" id="price" placeholder="$$.$$" name="price" [(ngModel)]="candle.price">
 
-
   <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked [(ngModel)]="candle.inStock">
+    <input class="form-check-input" type="checkbox" [value]="candle.id" id="flexCheckChecked" [checked]="candle.inStock" (change)="onChangeInStock($event)">
     <label class="form-check-label" for="flexCheckChecked">
         In Stock
     </label>

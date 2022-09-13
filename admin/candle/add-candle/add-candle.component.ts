@@ -11,7 +11,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AddCandleComponent implements OnInit {
 
-  checked = false;
 
   @Input()
   candle:Candle;
@@ -39,6 +38,17 @@ export class AddCandleComponent implements OnInit {
       this.imgURL = reader.result;
     };
 
+  }
+  onChangeInStock($event:any)
+  {
+    const isChecked = $event.target.checked;
+    if(isChecked)
+    {
+      this.candle.inStock = true;
+    }
+    else{
+      this.candle.inStock = false;
+    }
   }
   saveCandle() {
       if(this.candle.id == null)
