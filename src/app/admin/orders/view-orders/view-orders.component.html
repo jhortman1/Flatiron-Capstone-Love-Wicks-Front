@@ -1,0 +1,19 @@
+<div class="appOrderDetails">
+    <h3>Order details</h3>
+    <table>
+      <tr>
+        <td>Customer Id: </td>
+        <td>{{selectedOrder.customerId}}</td>
+      </tr>
+      <tr>
+        <td>Order Status: </td>
+        <td>{{selectedOrder.open}}</td>
+      </tr>
+      <tr *ngFor="let id of candles" >
+        <td>Candle Id: {{id}}</td>
+      </tr>
+  
+    </table>
+    <br>
+    <a class="btn btn-small btn btn-outline-danger" (click)="deleteOrder()"> Close</a>
+  </div>

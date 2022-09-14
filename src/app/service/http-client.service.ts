@@ -35,9 +35,20 @@ export class HttpClientService {
   updateCandle(updatedCandle: Candle) {
     return this.httpClient.put<Candle>('http://localhost:8080/api/candle/'+updatedCandle.id, updatedCandle);
   }
+  getOrders()
+  {
+    return this.httpClient.get<Order[]>('http://localhost:8080/api/orders');
+  }
+  getOrdersById(id:number)
+  {
+    return this.httpClient.get<Order>('http://localhost:8080/api/order/'+id);
+  }
   addOrder(order: Order)
   {
-    console.log(order);
     return this.httpClient.post<Order>('http://localhost:8080/api/order', order);
+  }
+  deleteOrder(id: number)
+  {
+    return this.httpClient.delete<Order>('http://localhost:8080/api/order/'+id);
   }
 }

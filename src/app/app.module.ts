@@ -20,6 +20,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import { JwtModule } from '@auth0/angular-jwt';
+import { ViewOrdersComponent } from './admin/orders/view-orders/view-orders.component';
+import { OrderComponent } from './admin/orders/order/order.component';
 
 export function tokenGetter() {
   return localStorage.getItem("Love_Wicks_App");
@@ -39,6 +41,8 @@ export function tokenGetter() {
     CandleShopComponent,
     AboutComponent,
     RegistrationComponent,
+    ViewOrdersComponent,
+    OrderComponent,
   ],
   imports: [
     BrowserModule,

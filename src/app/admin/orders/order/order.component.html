@@ -1,0 +1,26 @@
+<h1>Order Admin</h1>
+<div class="container row">
+  <div class="col-md-6">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Open</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders">
+          <td>{{order.orderId}}</td>
+          <td>{{order.open}}</td>
+          <td>
+            <button type="button" class="btn btn-outline-info btn-sm" (click)="vieworder(order.orderId)">Details</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-6">
+    <app-view-orders *ngIf="action === 'view'" [selectedOrder]="selectedOrder" (orderDeletedEvent)="refreshData()"></app-view-orders>
+  </div>
+</div>

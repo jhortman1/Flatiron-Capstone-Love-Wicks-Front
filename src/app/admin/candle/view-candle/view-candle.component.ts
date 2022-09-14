@@ -10,8 +10,6 @@ import { HttpClientService } from 'src/app/service/http-client.service';
 })
 export class ViewCandleComponent implements OnInit {
 
-  loader = true;
-
   @Input()
   candle:Candle;
   
