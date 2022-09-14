@@ -1,6 +1,8 @@
+import { AuthServiceService } from './../auth-service.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-registration',
@@ -17,7 +19,7 @@ export class RegistrationComponent implements OnInit {
     password: new FormControl(null,[Validators.required,Validators.minLength(6)])
   });
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authService: AuthServiceService) { }
 
   ngOnInit(): void {
   }
@@ -25,7 +27,9 @@ export class RegistrationComponent implements OnInit {
   {
     if(this.form.valid)
     {
-      console.log("Good Form")
+      this.authService.register(this.name.value,this.address.value,this.email.value,this.phone.value,this.password.value).pipe(
+        tap(()=> this.router.navigate(['']))
+      ).subscribe()
     }
   }
   get name(): FormControl{

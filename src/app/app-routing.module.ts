@@ -10,10 +10,10 @@ import { LoginComponentComponent } from './login-component/login-component.compo
 
 const routes: Routes = [
   { path: '', component: LoginComponentComponent},
-  { path: 'admin/users',canActivate: [AuthGuard], component: UserComponentComponent },
-  { path: 'admin/candles',canActivate: [AuthGuard], component: CandleComponent },
-  { path: 'shop', canActivate: [AuthGuard],component: CandleShopComponent},
-  { path: 'about', canActivate: [AuthGuard],component: AboutComponent},
+  { path: 'admin/users',canActivate: [AuthGuard],data:{roles:['ROLE_ADMIN']}, component: UserComponentComponent },
+  { path: 'admin/candles',canActivate: [AuthGuard],data:{roles:['ROLE_ADMIN']}, component: CandleComponent },
+  { path: 'shop',component: CandleShopComponent},
+  { path: 'about',component: AboutComponent},
   { path: 'registration', component: RegistrationComponent, }
 ];
 

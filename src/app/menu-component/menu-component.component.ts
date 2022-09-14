@@ -1,3 +1,4 @@
+import { AuthServiceService } from './../auth-service.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -8,9 +9,16 @@ import { Router } from '@angular/router';
 })
 export class MenuComponentComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  isAdmin:boolean; 
+
+  constructor(private router:Router, private authService:AuthServiceService) { }
 
   ngOnInit(): void {
+  
+  }
+  logout()
+  {
+    localStorage.removeItem('Love_Wicks_App')
   }
   
   goShop()
