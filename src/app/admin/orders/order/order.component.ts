@@ -39,6 +39,7 @@ export class OrderComponent implements OnInit {
           this.selectedOrder = response;
         }
       }
+      
     );
   }
 
@@ -48,6 +49,7 @@ export class OrderComponent implements OnInit {
       response => this.handleSuccessfulResponseById(response)
     );
     this.router.navigate(['admin','orders'], {queryParams : {orderId, action: 'view'}});
+    
   }
 
 }
