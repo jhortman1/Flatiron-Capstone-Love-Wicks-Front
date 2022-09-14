@@ -1,0 +1,28 @@
+<h1>Candle Admin</h1>
+<a class="container row btn btn-outline-primary btn-sm" (click)="addCandle()">Add Candle</a>
+<div class="container row">
+  <div class="col-md-6">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Candle Name</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let candle of candles">
+          <td>{{candle.id}}</td>
+          <td>{{candle.name}}</td>
+          <td>
+            <button type="button" class="btn btn-outline-info btn-sm" (click)="viewCandle(candle.id)">Details</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-6">
+    <app-add-candle *ngIf="action === 'edit' || action === 'add'" [candle]="selectedCandle" (candleAddedEvent)="refreshData()"></app-add-candle>
+    <app-view-candle *ngIf="action === 'view'" [candle]="selectedCandle"></app-view-candle>
+  </div>
+</div>

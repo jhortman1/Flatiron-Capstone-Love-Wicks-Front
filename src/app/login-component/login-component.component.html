@@ -1,0 +1,20 @@
+        <div class="container">
+            <h1>Login Love Wicks!</h1>
+            <form [formGroup]="form" (click)="login()">
+                <table>
+                    <tr>
+                        <label>Email:</label>
+                        <input name="email" formControlName="email" placeholder="abc@email.com" required>
+                    </tr>
+                    <tr>
+                        <label>Password:</label>
+                        <input name="password" formControlName="password" type="password" placeholder="enter your password" required>
+                    </tr>
+                    <tr>
+                        <button [disabled]="!form.valid" type="button" class="btn btn-outline-primary btn-sml" >Login</button>
+                    </tr>
+                </table>
+                    <p>
+                    <a routerLink="/registration">Sign-up</a>
+            </form>
+        </div>
