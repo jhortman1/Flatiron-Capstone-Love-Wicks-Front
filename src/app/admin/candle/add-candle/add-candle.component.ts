@@ -3,6 +3,7 @@ import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import { HttpClientService } from 'src/app/service/http-client.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-candle',
@@ -11,6 +12,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AddCandleComponent implements OnInit {
 
+  form:FormGroup = new FormGroup({
+    name: new FormControl(null,[Validators.email,Validators.required]),
+    description: new FormControl(null,[Validators.required,Validators.minLength(6)]),
+    price: new FormControl(null,[Validators.required])
+  });
+  
 
   @Input()
   candle:Candle;
@@ -50,7 +57,20 @@ export class AddCandleComponent implements OnInit {
       this.candle.inStock = false;
     }
   }
+
+  get name(): FormControl{
+    return this.form.get('email') as FormControl;
+  }
+  get description(): FormControl{
+    return this.form.get('password') as FormControl;
+  }
+  get price(): FormControl{
+    return this.form.get('password') as FormControl;
+  }
+  
   saveCandle() {
+    if(this.form.invalid)
+    {
       if(this.candle.id == null)
       {
         const uploadData = new FormData();
@@ -80,6 +100,8 @@ export class AddCandleComponent implements OnInit {
           }
         );
       }
+    }
+
   }
 
 }
