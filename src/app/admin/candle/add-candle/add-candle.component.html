@@ -1,35 +1,22 @@
-<h3>{{candle.id == null ? 'Add' : 'Edit'}} Candle {{candle.id}}</h3>
+<h3>{{candle.id == null ? 'Add' : 'Edit'}} Candle - {{candle.id}}</h3>
+<form>
+  <label for="name">Name</label>
+  <input type="text" required="required" class="form-control" id="name" placeholder="Candle Name" [(ngModel)]="candle.name" name="name">
+  <label for="description">Description</label>
+  <input type="text" required="required" class="form-control" id="description" placeholder="Description" name="description" [(ngModel)]="candle.description">
+  <label for="price">Price</label>
+  <input type="text" required="required" class="form-control" id="price" placeholder="$$.$$" name="price" [(ngModel)]="candle.price">
 
-<form [formGroup]="form" (click)="saveCandle()">
-  <tr>
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" placeholder="Candle Name" [(ngModel)]="candle.name" name="name">
-    </div>
-  </tr>
-  <tr>
-    <div class="form-group">
-      <label for="description">Description</label>
-      <input type="text" class="form-control" id="description" placeholder="Description" name="description" [(ngModel)]="candle.description">
-    </div>
-  </tr>
-  <tr>
-    <div class="form-group">
-      <label for="price">Price</label>
-      <input type="text" class="form-control" id="price" placeholder="$$.$$" name="price" [(ngModel)]="candle.price">
-    </div>
-  </tr>
-  <button [disabled]="!form.valid" type="button" class="btn btn-outline-success btn-sml">Save</button>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" [value]="candle.id" id="flexCheckChecked" [checked]="candle.inStock" (change)="onChangeInStock($event)">
+    <label class="form-check-label" for="flexCheckChecked">
+        In Stock
+    </label>
+  </div>
+<br>
+  <input type="file" (change)="onFileChanged($event)">
+  <img [src]="imgURL" height="200" width="200" *ngIf="imgURL">
+<br>    
+  <br>
+  <button type="button" class="btn btn-success" (click)="saveCandle()">Save</button>
 </form>
-
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" [value]="candle.id" id="flexCheckChecked" [checked]="candle.inStock" (change)="onChangeInStock($event)">
-  <label class="form-check-label" for="flexCheckChecked">
-      In Stock
-  </label>
-
-</div>
-  <br>
-    <input type="file" (change)="onFileChanged($event)">
-    <img [src]="imgURL" height="200" width="200" *ngIf="imgURL">
-  <br>
